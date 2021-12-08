@@ -9,31 +9,32 @@ public class form1 extends JFrame implements ActionListener {
     JTextArea f1;
     JLabel l;
     JLabel l1;
-    JCheckBox ch1 ;
+    JCheckBox ch1;
     JCheckBox ch2;
     JButton b1;
     JButton b;
     JButton b2;
-    form1(){
-       setTitle("Basic GUI program");
+
+    form1() {
+        setTitle("Basic GUI program");
         l = new JLabel("Input:");
         l1 = new JLabel("Output:");
-        l.setBounds(185,180,100,40);
-        l1.setBounds(180,310,100,40);
-        b1=new JButton("Exit");//exits from application
-        b=new JButton("Change Text");//changes text in f1(substitute goes from textfield t)
-        b2=new JButton("Clear All");//clears text in textfield f1
+        l.setBounds(185, 180, 100, 40);
+        l1.setBounds(180, 310, 100, 40);
+        b1 = new JButton("Exit");//exits from application
+        b = new JButton("Change Text");//changes text in f1(substitute goes from textfield t)
+        b2 = new JButton("Clear All");//clears text in textfield f1
         ch1 = new JCheckBox("Upper Case");
         ch2 = new JCheckBox("Lower Case");
-        ch1.setBounds(300,60, 120,50);
-        ch2.setBounds(180,60, 120,50);
-        b2.setBounds(480,10,90,40);
-        b1.setBounds(10,10,90, 40);
-        b.setBounds(225,10,120,40);
+        ch1.setBounds(300, 60, 120, 50);
+        ch2.setBounds(180, 60, 120, 50);
+        b2.setBounds(480, 10, 90, 40);
+        b1.setBounds(10, 10, 90, 40);
+        b.setBounds(225, 10, 120, 40);
         t = new JTextArea();
-        t.setBounds(225,180,150,120);
+        t.setBounds(225, 180, 150, 120);
         f1 = new JTextArea();
-        f1.setBounds(225,310,150,120);
+        f1.setBounds(225, 310, 150, 120);
         add(b2);
         add(f1);
         add(t);
@@ -47,20 +48,29 @@ public class form1 extends JFrame implements ActionListener {
         b1.addActionListener(e -> System.exit(0));
         b2.addActionListener(e -> t.setText(null));
         b2.addActionListener(e -> f1.setText(null));
-        setSize(600,500);
+        setSize(600, 500);
         setLayout(null);
         setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        var text= t.getText();
-        if(ch1.isSelected()){
-            f1.setText(text.toUpperCase()+"\n");}
-            if(ch2.isSelected()){
-            f1.setText(text.toLowerCase()+"\n");}
-            if(ch1.isSelected()&&ch2.isSelected()){
-                f1.setText(null);
-            JOptionPane.showMessageDialog(this,"Choose only one option!!!");
+        var text = t.getText();
+        var i =ch1.isSelected();
+        var i2 = ch2.isSelected();
+        if (text.equals("")){
+            JOptionPane.showMessageDialog(this, "Enter something!!");
         }
+        if (i) {
+            f1.setText(text.toUpperCase() + "\n");
         }
+        if (i2) {
+            f1.setText(text.toLowerCase() + "\n");
+        }
+        if (ch1.isSelected() && ch2.isSelected()) {
+            f1.setText(null);
+            JOptionPane.showMessageDialog(this, "Choose only one option!!!");
+        }
+
+    }
 }
